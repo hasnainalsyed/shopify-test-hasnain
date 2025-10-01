@@ -21,9 +21,13 @@
 
       <div class="header__logo">
         {% if section.settings.logo %}
-          {{ section.settings.logo | image_url: width: logo_width | image_tag: loading: loading, width: logo_width }}
+          <a href="{{ routes.root_url }}">
+            {{ section.settings.logo | image_url: width: logo_width | image_tag: loading: loading, width: logo_width }}
+          </a>
         {% else %}
-          {{ shop.name }}
+          <a href="{{ routes.root_url }}">
+            {{ shop.name }}
+          </a>
         {% endif %}
       </div>
 
