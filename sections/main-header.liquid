@@ -3,7 +3,7 @@
 {% liquid
   assign logo_width = section.settings.logo_width | default: 100
 
-  if section.index == 1
+  if section.index <= 1
     assign loading = 'eager'
   else
     assign loading = 'lazy'
