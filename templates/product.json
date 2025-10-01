@@ -10,7 +10,43 @@
 {
   "sections": {
     "main": {
-      "type": "product",
+      "type": "main-product",
+      "blocks": {
+        "product_category_gGPWrj": {
+          "type": "product-category",
+          "settings": {}
+        },
+        "product_title_PCMgtg": {
+          "type": "product-title",
+          "settings": {
+            "show_product_price": true
+          }
+        },
+        "product_description_LHm4GL": {
+          "type": "product-description",
+          "settings": {}
+        },
+        "quantity_selector_UJj4MD": {
+          "type": "quantity-selector",
+          "settings": {}
+        },
+        "variant_picker_RMRpJe": {
+          "type": "variant-picker",
+          "settings": {}
+        },
+        "buy_buttons_EJeaXG": {
+          "type": "buy-buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product_category_gGPWrj",
+        "product_title_PCMgtg",
+        "product_description_LHm4GL",
+        "quantity_selector_UJj4MD",
+        "variant_picker_RMRpJe",
+        "buy_buttons_EJeaXG"
+      ],
       "settings": {}
     }
   },

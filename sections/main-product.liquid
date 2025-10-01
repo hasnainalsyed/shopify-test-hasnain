@@ -5,46 +5,143 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
+{{ 'main-product.css' | asset_url | stylesheet_tag: preload: true }}
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
+<product-info
+  id="MainProduct-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+  data-product-info-main="true"
+>
+  <div class="main-product__product-info-wrapper">
+    <div class="main-product__product-gallery">
+      <div class="main-product__product-gallery-images">
+        {% for image in product.images %}
+          {% render 'image',
+            class: 'main-product__product-gallery-image main-product__product-gallery-image--active',
+            image: image
+          %}
+        {% endfor %}
+      </div>
+    </div>
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
+    <div class="main-product__product-info">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'product-category' %}
+            {% if product.category != blank %}
+              <div class="main-product__product-category">
+                {{ product.category }} / <span class="main-product__product-category-title">{{ product.title }}</span>
+              </div>
+            {% endif %}
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
+          {% when 'product-title' %}
+            <h1 class="main-product__product-title">
+              {{ product.title }}
+              {% if block.settings.show_product_price %}
+                - {{ product.price | money }}
+              {% endif %}
+            </h1>
+
+          {% when 'product-description' %}
+            {% if product.description != blank %}
+              <div class="main-product__product-description">
+                {{ product.description }}
+              </div>
+            {% endif %}
+
+          {% when 'quantity-selector' %}
+            <div class="main-product__quantity-selector">
+              {% render 'quantity-selector', product: product %}
+            </div>
+
+          {% when 'variant-picker' %}
+            <div class="main-product__product-form">
+              {% render 'variant-picker', product: product %}
+            </div>
+
+          {% when 'buy-buttons' %}
+            <div class="main-product__buy-buttons">
+              {% render 'buy-buttons', product: product %}
+            </div>
+
+          {% when 'text-with-icon' %}
+            <div class="main-product__text-with-icon">
+              {% render 'text-with-icon', block: block %}
+            </div>
+        {% endcase %}
       {% endfor %}
-    </select>
-
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+    </div>
+  </div>
+</product-info>
 
 {% schema %}
 {
   "name": "t:general.product",
   "settings": [],
+  "blocks": [
+    {
+      "type": "product-category",
+      "name": "Product category",
+      "limit": 1
+    },
+    {
+      "type": "product-title",
+      "name": "Product title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_product_price",
+          "label": "Show product price",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "product-description",
+      "name": "Product description",
+      "limit": 1
+    },
+    {
+      "type": "quantity-selector",
+      "name": "Quantity selector",
+      "limit": 1
+    },
+    {
+      "type": "variant-picker",
+      "name": "Variant picker",
+      "limit": 1
+    },
+    {
+      "type": "buy-buttons",
+      "name": "Buy buttons",
+      "limit": 1
+    },
+    {
+      "type": "text-with-icon",
+      "name": "Text with icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
   "disabled_on": {
     "groups": ["header", "footer"]
   }
