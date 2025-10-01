@@ -1,0 +1,78 @@
+{{ 'main-header.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign logo_width = section.settings.logo_width | default: 100
+
+  if section.index == 1
+    assign loading = 'eager'
+  else
+    assign loading = 'lazy'
+  endif
+%}
+
+<header>
+  <div class="page-width">
+    <div class="header">
+      <div class="header__menu">
+        {% for link in section.settings.menu.links %}
+          {{ link.title | link_to: link.url }}
+        {% endfor %}
+      </div>
+
+      <div class="header__logo">
+        {% if section.settings.logo %}
+          {{ section.settings.logo | image_url: width: logo_width | image_tag: loading: loading, width: logo_width }}
+        {% else %}
+          {{ shop.name }}
+        {% endif %}
+      </div>
+
+      <div class="header__icons">
+        {% if shop.customer_accounts_enabled %}
+          <a href="{{ routes.account_url }}">
+            {{ 'general.account' | t }}
+          </a>
+        {% endif %}
+
+        <a href="{{ routes.cart_url }}">
+          {% if cart.item_count > 0 %}
+            <sup>{{ cart.item_count }}</sup>
+          {% endif %}
+
+          {{ 'general.cart' | t }}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "t:general.header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:labels.logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "t:labels.logo_width",
+      "min": 100,
+      "max": 1000,
+      "step": 100,
+      "default": 100
+    }
+  ]
+}
+{% endschema %}

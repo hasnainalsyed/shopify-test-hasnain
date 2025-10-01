@@ -5,6 +5,7 @@
     "block": "Block",
     "blog": "Blog",
     "cart": "Cart",
+    "account": "Sign in",
     "collection": "Collection",
     "collections": "Collections",
     "collection_card": "Collection card",
@@ -47,6 +48,8 @@
     "page_width": "Page width",
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
+    "logo": "Logo",
+    "logo_width": "Logo width",
     "text": "Text"
   },
   "options": {

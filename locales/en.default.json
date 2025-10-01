@@ -4,6 +4,10 @@
     "not_found": "Page not found.",
     "back_to_shopping": "Back to shopping"
   },
+  "general": {
+    "account": "Sign in",
+    "cart": "Cart"
+  },
   "blog": {
     "article_comments": "Comments",
     "article_metadata_html": "{{ date }} by {{ author }}",

@@ -11,6 +11,9 @@
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
+    {% comment %} Load the global CSS {% endcomment %}
+    {{ 'global-style.css' | asset_url | stylesheet_tag: preload: true }}
   </head>
 
   <body>

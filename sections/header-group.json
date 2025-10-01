@@ -12,11 +12,15 @@
   "name": "t:general.header",
   "sections": {
     "header": {
-      "type": "header",
-      "settings": {}
+      "type": "main-header",
+      "settings": {
+        "menu": "main-menu-1",
+        "logo": "shopify://shop_images/Logo.png",
+        "logo_width": 100
+      }
     }
   },
   "order": [
     "header"
-  ],
+  ]
 }
