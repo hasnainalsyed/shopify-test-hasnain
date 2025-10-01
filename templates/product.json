@@ -37,6 +37,17 @@
         "buy_buttons_EJeaXG": {
           "type": "buy-buttons",
           "settings": {}
+        },
+        "delivery_and_returns_zJCPpA": {
+          "type": "delivery-and-returns",
+          "settings": {
+            "delivery_title": "Free Delivery",
+            "delivery_content": "<p><a href=\"#\" title=\"#\">Enter your Postal code for Delivery Availability</a></p>",
+            "delivery_icon": "shopify://shop_images/Frame.png",
+            "returns_title": "Return Delivery",
+            "returns_content": "<p>Free 30 days Delivery Return. <a href=\"#\" title=\"#\">Details</a></p>",
+            "returns_icon": "shopify://shop_images/Frame_1.png"
+          }
         }
       },
       "block_order": [
@@ -45,7 +56,8 @@
         "product_description_LHm4GL",
         "quantity_selector_UJj4MD",
         "variant_picker_RMRpJe",
-        "buy_buttons_EJeaXG"
+        "buy_buttons_EJeaXG",
+        "delivery_and_returns_zJCPpA"
       ],
       "settings": {}
     }

@@ -67,9 +67,9 @@
               {% render 'buy-buttons', product: product %}
             </div>
 
-          {% when 'text-with-icon' %}
-            <div class="main-product__text-with-icon">
-              {% render 'text-with-icon', block: block %}
+          {% when 'delivery-and-returns' %}
+            <div class="main-product__delivery-and-returns">
+              {% render 'delivery-and-returns', block: block %}
             </div>
         {% endcase %}
       {% endfor %}
@@ -121,23 +121,46 @@
       "limit": 1
     },
     {
-      "type": "text-with-icon",
-      "name": "Text with icon",
+      "type": "delivery-and-returns",
+      "name": "Delivery and returns",
       "settings": [
         {
+          "type": "header",
+          "content": "Delivery"
+        },
+        {
           "type": "text",
-          "id": "title",
-          "label": "Title"
+          "id": "delivery_title",
+          "label": "Delivery title"
         },
         {
           "type": "richtext",
-          "id": "content",
-          "label": "Content"
+          "id": "delivery_content",
+          "label": "Delivery content"
         },
         {
           "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
+          "id": "delivery_icon",
+          "label": "Delivery icon"
+        },
+        {
+          "type": "header",
+          "content": "Returns"
+        },
+        {
+          "type": "text",
+          "id": "returns_title",
+          "label": "Returns title"
+        },
+        {
+          "type": "richtext",
+          "id": "returns_content",
+          "label": "Returns content"
+        },
+        {
+          "type": "image_picker",
+          "id": "returns_icon",
+          "label": "Returns icon"
         }
       ]
     }

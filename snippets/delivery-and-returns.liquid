@@ -1,0 +1,28 @@
+<div class="delivery-and-returns">
+  <div class="delivery-and-returns__item delivery-and-returns__item--delivery ">
+    <div class="delivery-and-returns__delivery-icon">
+      {% render 'image', image: block.settings.delivery_icon %}
+    </div>
+    <div class="delivery-and-returns__delivery-content-wrapper">
+      <div class="delivery-and-returns__delivery-title">
+        {{ block.settings.delivery_title }}
+      </div>
+      <div class="delivery-and-returns__delivery-content">
+        {{ block.settings.delivery_content }}
+      </div>
+    </div>
+  </div>
+  <div class="delivery-and-returns__item delivery-and-returns__item--returns ">
+    <div class="delivery-and-returns__returns-icon">
+      {% render 'image', image: block.settings.returns_icon %}
+    </div>
+    <div class="delivery-and-returns__returns-content-wrapper">
+      <div class="delivery-and-returns__returns-title">
+        {{ block.settings.returns_title }}
+      </div>
+      <div class="delivery-and-returns__returns-content">
+        {{ block.settings.returns_content }}
+      </div>
+    </div>
+  </div>
+</div>
