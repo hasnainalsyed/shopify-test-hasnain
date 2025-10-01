@@ -7,6 +7,8 @@
 
 {{ 'main-product.css' | asset_url | stylesheet_tag: preload: true }}
 
+<script src="{{ 'main-product-gallery.js' | asset_url }}" defer></script>
+
 <product-info
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
@@ -17,13 +19,36 @@
 >
   <div class="main-product__product-info-wrapper">
     <div class="main-product__product-gallery">
-      <div class="main-product__product-gallery-images">
-        {% for image in product.images %}
-          {% render 'image',
-            class: 'main-product__product-gallery-image main-product__product-gallery-image--active',
-            image: image
-          %}
-        {% endfor %}
+      <!-- Main Image -->
+      <div class="main-product__product-gallery-main">
+        {% assign first_image = product.featured_image %}
+        <img
+          src="{{ first_image | image_url: width: 800, height: 800 }}"
+          alt="{{ first_image.alt | escape }}"
+          width="{{ first_image.width }}"
+          height="{{ first_image.height }}"
+          loading="eager"
+          data-product-gallery-main-image="true"
+          class="main-product__product-gallery-main-image"
+        >
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="main-product__product-gallery-thumbs-wrapper">
+        <div class="main-product__product-gallery-thumbs" data-product-gallery-thumbs="true">
+          {% for image in product.images %}
+            <img
+              class="main-product__product-gallery-thumb{% if product.featured_image == image %} main-product__product-gallery-thumb--active{% endif %}"
+              src="{{ image | image_url: width: 150, height: 150 }}"
+              data-full="{{ image | image_url: width: 800, height: 800 }}"
+              alt="{{ image.alt | escape }}"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              loading="lazy"
+              data-product-gallery-thumb="true"
+            >
+          {% endfor %}
+        </div>
       </div>
     </div>
 

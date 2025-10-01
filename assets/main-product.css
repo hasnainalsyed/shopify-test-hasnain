@@ -14,6 +14,53 @@
   border-right: 1px solid var(--color-cod-gray);
 }
 
+.main-product__product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.main-product__product-gallery-main {
+  text-align: center;
+}
+
+.main-product__product-gallery-main-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.main-product__product-gallery-thumbs-wrapper {
+  padding: 10px 0;
+}
+
+.main-product__product-gallery-thumbs {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  padding: 0 10px 10px 10px;
+}
+
+.main-product__product-gallery-thumb {
+  width: 115px;
+  height: auto;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.main-product__product-gallery-thumb:hover,
+.main-product__product-gallery-thumb--active {
+  opacity: 1;
+  border-color: #000;
+}
+
 .main-product__product-info {
   flex: 0 0 50%;
   max-width: 50%;
@@ -49,8 +96,62 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-16);
   line-height: 140%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   vertical-align: middle;
   color: var(--color-cod-gray-90);
   margin-bottom: 24px;
+}
+
+.delivery-and-returns {
+  border: 1px solid var(--color-mercury);
+  padding: 17px;
+  border-radius: 14px;
+}
+
+.delivery-and-returns__item {
+  display: flex;
+  flex-direction: row;
+}
+
+.delivery-and-returns__title {
+  font-size: var(--font-size-17);
+  font-weight: var(--font-weight-700);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-cloud-brust);
+  margin-bottom: 7px;
+}
+
+.delivery-and-returns__item:not(:last-child) {
+  padding-bottom: 21px;
+  margin-bottom: 21px;
+  border-bottom: 1px solid var(--color-mercury);
+}
+
+.delivery-and-returns__icon {
+  flex: 0 0 24px;
+  max-width: 24px;
+}
+
+.delivery-and-returns__content-wrapper {
+  flex: 1;
+  margin-left: 14px;
+}
+
+.delivery-and-returns__content {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-dover-gray);
+}
+
+.delivery-and-returns__content a {
+  color: var(--color-dover-gray);
+  text-decoration: underline;
+}
+
+.delivery-and-returns__content a:hover {
+  color: var(--color-cloud-brust);
+  text-decoration: underline;
 }
