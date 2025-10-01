@@ -10,42 +10,56 @@
   endif
 %}
 
-<header>
-  <div class="page-width">
-    <div class="header">
-      <div class="header__menu">
+<header class="header">
+  <div class="header__inner">
+    <div class="header__menu">
+      <ul class="header__menu-list">
         {% for link in section.settings.menu.links %}
-          {{ link.title | link_to: link.url }}
+          <li class="header__menu-item">
+            <a href="{{ link.url }}" class="header__menu-link">
+              {{ link.title }}
+            </a>
+          </li>
         {% endfor %}
-      </div>
+      </ul>
+    </div>
 
-      <div class="header__logo">
-        {% if section.settings.logo %}
-          <a href="{{ routes.root_url }}">
-            {{ section.settings.logo | image_url: width: logo_width | image_tag: loading: loading, width: logo_width }}
-          </a>
-        {% else %}
-          <a href="{{ routes.root_url }}">
-            {{ shop.name }}
-          </a>
-        {% endif %}
-      </div>
-
-      <div class="header__icons">
-        {% if shop.customer_accounts_enabled %}
-          <a href="{{ routes.account_url }}">
-            {{ 'general.account' | t }}
-          </a>
-        {% endif %}
-
-        <a href="{{ routes.cart_url }}">
-          {% if cart.item_count > 0 %}
-            <sup>{{ cart.item_count }}</sup>
-          {% endif %}
-
-          {{ 'general.cart' | t }}
+    <div class="header__logo">
+      {% if section.settings.logo %}
+        <a href="{{ routes.root_url }}" class="header__logo-link">
+          {{
+            section.settings.logo
+            | image_url: width: logo_width
+            | image_tag: loading: loading, width: logo_width, class: 'header__logo-image'
+          }}
         </a>
-      </div>
+      {% else %}
+        <a href="{{ routes.root_url }}" class="header__logo-link">
+          {{ shop.name }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="header__icons">
+      <ul class="header__icons-list">
+        {% if shop.customer_accounts_enabled %}
+          <li class="header__icon-item">
+            <a href="{{ routes.account_url }}" class="header__icon-link">
+              {{ 'general.account' | t }}
+            </a>
+          </li>
+        {% endif %}
+
+        <li class="header__icon-item">
+          <a href="{{ routes.cart_url }}" class="header__icon-link">
+            {% if cart.item_count > 0 %}
+              <sup>{{ cart.item_count }}</sup>
+            {% endif %}
+
+            {{ 'general.cart' | t }}
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </header>
