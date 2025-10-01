@@ -1,0 +1,19 @@
+<div class="main-product__quantity-selector">
+  <label class="main-product__quantity-selector-label" for="quantity">Quantity</label>
+  <div class="main-product__quantity-selector-wrapper" data-quantity-selector-wrapper="true">
+    <button class="main-product__quantity-selector-button" data-quantity-selector-button="minus">
+      {{ 'minus.svg' | inline_asset_content }}
+    </button>
+    <input
+      type="number"
+      name="quantity"
+      value="1"
+      data-quantity-selector-input="true"
+      min="1"
+      class="main-product__quantity-selector-input"
+    >
+    <button class="main-product__quantity-selector-button" data-quantity-selector-button="plus">
+      {{ 'plus.svg' | inline_asset_content }}
+    </button>
+  </div>
+</div>

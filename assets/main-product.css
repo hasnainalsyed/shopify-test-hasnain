@@ -70,8 +70,8 @@
 .main-product__product-category {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-500);
-  line-height: 120%;
-  letter-spacing: 2.5%;
+  line-height: 1.2;
+  letter-spacing: 0.025;
   color: var(--color-cod-gray);
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -84,8 +84,8 @@
 .main-product__product-title {
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-38);
-  line-height: 120%;
-  letter-spacing: 0%;
+  line-height: 1.2;
+  letter-spacing: 0;
   vertical-align: middle;
   color: var(--color-cod-gray);
   margin-bottom: 16px;
@@ -95,7 +95,7 @@
   font-family: var(--font-secondary);
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-16);
-  line-height: 140%;
+  line-height: 1.4;
   letter-spacing: 0;
   vertical-align: middle;
   color: var(--color-cod-gray-90);
@@ -154,4 +154,159 @@
 .delivery-and-returns__content a:hover {
   color: var(--color-cloud-brust);
   text-decoration: underline;
+}
+
+.main-product__quantity-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.main-product__quantity-selector-label {
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-18);
+  line-height: 1.4;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: var(--color-cod-gray);
+}
+
+.main-product__quantity-selector-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main-product__quantity-selector-button {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--color-cod-gray);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-cod-gray);
+}
+
+.main-product__quantity-selector-button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.main-product__quantity-selector-button:hover {
+  background: var(--color-cod-gray);
+  color: var(--color-white);
+}
+
+.main-product__quantity-selector-input {
+  border: none;
+  border-top: 1px solid var(--color-cod-gray);
+  border-bottom: 1px solid var(--color-cod-gray);
+  padding: 0 16px;
+  width: 64px;
+  height: 44px;
+  border-radius: 0;
+  text-align: center;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  line-height: 1.4;
+  letter-spacing: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  color: var(--color-cod-gray);
+}
+
+.main-product__quantity-selector-input:hover,
+.main-product__quantity-selector-input:focus {
+  outline: none;
+  border-color: var(--color-cod-gray);
+  appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.main-product__quantity-selector-input::-webkit-outer-spin-button,
+.main-product__quantity-selector-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.main-product__quantity-selector-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.main-product__variant-picker {
+  margin-bottom: 40px;
+}
+
+.main-product__variant-picker-label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #999;
+}
+
+.main-product__variant-picker-options {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-product__variant-picker-swatch {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--swatch-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.main-product__variant-picker-swatch--active {
+  width: 64px;
+  height: 64px;
+}
+
+.main-product__variant-picker-swatch-image {
+  width: 64px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.main-product__variant-picker-swatch-checkmark .icon {
+  color: var(--color-white);
+  width: 30px;
+  height: 20px;
+}
+
+.main-product__variant-picker-swatch--active .main-product__variant-picker-swatch-checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 57.5px;
+  height: 57.5px;
+  border: 3px solid var(--color-white);
+  border-radius: 100%;
+}
+
+.main-product__variant-picker-swatch--active .main-product__variant-picker-swatch-checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -8,6 +8,7 @@
 {{ 'main-product.css' | asset_url | stylesheet_tag: preload: true }}
 
 <script src="{{ 'main-product-gallery.js' | asset_url }}" defer></script>
+<script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
 <product-info
   id="MainProduct-{{ section.id }}"
@@ -78,24 +79,16 @@
             {% endif %}
 
           {% when 'quantity-selector' %}
-            <div class="main-product__quantity-selector">
-              {% render 'quantity-selector', product: product %}
-            </div>
+            {% render 'quantity-selector', product: product %}
 
           {% when 'variant-picker' %}
-            <div class="main-product__product-form">
-              {% render 'variant-picker', product: product %}
-            </div>
+            {% render 'variant-picker', product: product %}
 
           {% when 'buy-buttons' %}
-            <div class="main-product__buy-buttons">
-              {% render 'buy-buttons', product: product %}
-            </div>
+            {% render 'buy-buttons', product: product %}
 
           {% when 'delivery-and-returns' %}
-            <div class="main-product__delivery-and-returns">
-              {% render 'delivery-and-returns', block: block %}
-            </div>
+            {% render 'delivery-and-returns', block: block %}
         {% endcase %}
       {% endfor %}
     </div>

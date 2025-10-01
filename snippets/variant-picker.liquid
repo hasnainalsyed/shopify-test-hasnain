@@ -1,0 +1,28 @@
+<div class="main-product__variant-picker">
+  <p class="main-product__variant-picker-label">Choose a Color</p>
+  <div class="main-product__variant-picker-options">
+    {% for variant in product.variants %}
+      {% assign color = variant.metafields.custom.varinat_color.value %}
+      <button
+        type="button"
+        class="main-product__variant-picker-swatch{% if variant.id == product.selected_or_first_available_variant.id %} main-product__variant-picker-swatch--active{% endif %}"
+        style="--swatch-color: {{ color.color_name | downcase | handleize }}; --swatch-image: {{ color.color_image | image_url: width: 100 }};"
+        data-variant-id="{{ variant.id }}"
+        data-variant-picker-swatch="true"
+        aria-label="{{ variant.title }}"
+      >
+        <img
+          src="{{ color.color_image | image_url: width: 100 }}"
+          alt="{{ variant.title }}"
+          class="main-product__variant-picker-swatch-image"
+          width="100"
+          height="100"
+          data-variant-picker-swatch-image="true"
+        >
+        <span class="main-product__variant-picker-swatch-checkmark">
+          {{- 'checkmark.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    {% endfor %}
+  </div>
+</div>
