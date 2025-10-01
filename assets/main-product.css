@@ -310,3 +310,29 @@
   align-items: center;
   justify-content: center;
 }
+
+.main-product__buy-buttons-wrapper {
+  margin-bottom: 40px;
+}
+
+.main-product__buy-button {
+  width: 100%;
+  height: 56px;
+  padding: 16px 24px;
+  background: var(--color-cod-gray);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-16);
+  line-height: 1.2;
+  letter-spacing: 3%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.main-product__buy-button:hover {
+  background: var(--color-cloud-brust);
+}
