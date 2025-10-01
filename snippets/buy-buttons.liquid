@@ -1,7 +1,18 @@
-<product-form>
-  <div class="main-product__buy-buttons-wrapper">
-    <button class="main-product__buy-button" data-buy-button="add-to-cart">
-      {{ 'products.add_to_cart' | t }}
-    </button>
-  </div>
+<product-form class="main-product__form" data-product-form data-section="{{ section.id }}">
+  {% form 'product', product, id: 'ProductForm-{{ section.id }}', class: 'form', novalidate: 'novalidate' %}
+    <div class="main-product__buy-buttons-wrapper" data-buy-buttons-wrapper="true">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
+      <input type="hidden" name="quantity" value="1">
+
+      <button
+        type="submit"
+        name="add"
+        class="main-product__buy-button"
+        data-buy-button="add-to-cart"
+        aria-disabled="{{ product.selected_or_first_available_variant.available | unless: true }}"
+      >
+        {{ 'products.add_to_cart' | t }}
+      </button>
+    </div>
+  {% endform %}
 </product-form>

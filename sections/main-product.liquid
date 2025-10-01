@@ -95,6 +95,24 @@
   </div>
 </product-info>
 
+<script type="application/json" id="ProductMetafields-{{ section.id }}">
+  {
+    "variants": {
+      {% for variant in product.variants %}
+        "{{ variant.id }}": {
+          "variant_images": [
+            {% if variant.metafields.custom.variant_images.value %}
+              {% for image in variant.metafields.custom.variant_images.value %}
+                "{{ image | image_url: width: 2000 }}"{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            {% endif %}
+          ]
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    }
+  }
+</script>
+
 {% schema %}
 {
   "name": "t:general.product",
